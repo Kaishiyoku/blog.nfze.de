@@ -1,10 +1,6 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'ArticleController@index')->name('home');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login_form');
@@ -16,3 +12,5 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset_form');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.reset');
+
+Route::resource('articles', 'ArticleController');
