@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Carbon;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -22,6 +23,10 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property string $slug
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereSlug($value)
+ * @property string $published_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article published()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article unpublished()
  */
 class Article extends Model
 {
@@ -33,7 +38,7 @@ class Article extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'content',
+        'title', 'content', 'published_at',
     ];
 
     /**
@@ -43,6 +48,17 @@ class Article extends Model
      */
     protected $hidden = [
         //
+    ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'published_at'
     ];
 
     /**
@@ -63,5 +79,37 @@ class Article extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
+    }
+
+    /**
+     * @param  string  $value
+     * @return void
+     */
+    public function setPublishedAtAttribute($value)
+    {
+        $this->attributes['published_at'] = new Carbon($value);
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePublished($query)
+    {
+        return $query->whereDate('published_at', '<=', Carbon::now());
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeUnpublished($query)
+    {
+        return $query->whereDate('published_at', '>', Carbon::now());
+    }
+
+    public function isPublished()
+    {
+        return $this->published_at->lte(Carbon::now());
     }
 }

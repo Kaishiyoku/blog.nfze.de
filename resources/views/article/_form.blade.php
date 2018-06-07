@@ -13,6 +13,30 @@
 </div>
 
 <div class="form-group row">
+    {{ Form::label('published_at', __('validation.attributes.published_at'), ['class' => 'col-lg-12 control-label']) }}
+
+    <div class="col-lg-12">
+        <div class="input-group date" id="published_at_picker" data-target-input="nearest" data-provide="datepicker">
+            {{ Form::text('published_at', old('published_at', $article->published_att), ['class' => 'form-control datetimepicker-input' . ($errors->has('published_at') ? ' is-invalid' : ''), 'data-target' => '#published_at_picker']) }}
+
+            <div class="input-group-append" data-target="#published_at_picker" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+
+        <small id="published_at_help_block" class="form-text text-muted">
+            {{ __('article.help.published_at') }}
+        </small>
+
+        @if ($errors->has('published_at'))
+            <div class="invalid-feedback">
+                {{ $errors->first('published_at') }}
+            </div>
+        @endif
+    </div>
+</div>
+
+<div class="form-group row">
     {{ Form::label('content', __('validation.attributes.content'), ['class' => 'col-lg-12 control-label']) }}
 
     <div class="col-lg-12">
@@ -28,6 +52,6 @@
 
 <div class="form-group row">
     <div class="col-lg-12">
-        {{ Form::button($submitTitle, ['type' => 'submit', 'class' => 'btn btn-outline-primary']) }}
+        {{ Form::button($submitTitle, ['type' => 'submit', 'class' => 'btn btn-primary']) }}
     </div>
 </div>

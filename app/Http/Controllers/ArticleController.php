@@ -19,6 +19,7 @@ class ArticleController extends Controller
     private $validationRules = [
         'title' => ['required'],
         'content' => ['required'],
+        'published_at' => ['date_format:m/d/Y H:i'],
     ];
 
     /**
@@ -38,7 +39,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::published()->orderBy('published_at', 'desc');
+
+        if (auth()->check()) {
+            $articles = Article::orderBy('published_at', 'desc');
+        }
 
         return view('article.index', compact('articles'));
     }
@@ -81,6 +86,10 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
+        if (!$article->isPublished() && auth()->guest()) {
+            abort(404);
+        }
+
         return view('article.show', compact('article'));
     }
 

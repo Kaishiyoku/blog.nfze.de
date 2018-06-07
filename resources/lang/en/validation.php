@@ -144,6 +144,7 @@ return [
     'attributes' => [
         'title' => 'Title',
         'content' => 'Content',
+        'published_at' => 'To be published at',
     ],
 
 ];

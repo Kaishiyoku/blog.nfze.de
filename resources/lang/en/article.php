@@ -11,5 +11,8 @@ return [
     ],
     'destroy' => [
         'success' => 'Article deleted.',
-    ]
+    ],
+    'help' => [
+        'published_at' => 'Leave blank if you want the article to be published now.',
+    ],
 ];

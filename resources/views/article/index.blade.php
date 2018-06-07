@@ -8,8 +8,13 @@
             <hr/>
         @endauth
 
-        @foreach ($articles as $article)
-            <h3>{{ Html::linkRoute('articles.show', $article->title, [$article]) }}</h3>
+        @foreach ($articles->get() as $article)
+            {{ Html::linkRoute('articles.show', $article->title, [$article]) }}
+
+            @if (!$article->isPublished())
+                (unpublished)
+            @endif
+            <br/>
         @endforeach
     </div>
 @endsection
