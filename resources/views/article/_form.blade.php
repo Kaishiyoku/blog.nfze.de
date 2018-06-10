@@ -24,7 +24,9 @@
             </div>
         </div>
 
-
+        <small id="published_at_help_block" class="form-text text-muted">
+            {{ __('article.help.published_at') }}
+        </small>
 
         @if ($errors->has('published_at'))
             <div class="invalid-feedback">
