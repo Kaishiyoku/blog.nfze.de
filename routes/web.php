@@ -14,3 +14,4 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.reset');
 
 Route::resource('articles', 'ArticleController');
+Route::post('preview', 'ArticleController@preview')->name('articles.preview');

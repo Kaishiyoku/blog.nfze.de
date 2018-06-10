@@ -17,3 +17,14 @@
     width: 16rem !important;
   }
 }
+
+.fullscreen-editor-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: $white;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding-top: 10px;
+}

@@ -131,11 +131,22 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        $article->delette();
+        $article->delete();
 
         flash(__('article.destroy.success'))->success();
 
         return redirect()->route($this->redirectRoute);
+    }
+
+    /**
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function preview(Request $request)
+    {
+        $content = parseMarkdown($request->get('content'));
+
+        return response()->json($content);
     }
 
     private function getValidationRulesWithNameUniqueness(Article $article = null)

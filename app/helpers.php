@@ -4,7 +4,7 @@ use App\Libraries\Markdown\CustomMarkdown;
 use Illuminate\Support\Carbon;
 
 if (! function_exists('parseMarkdown')) {
-    function parseMarkdown(string $content) : string
+    function parseMarkdown($content) : string
     {
         $parser = new CustomMarkdown();
 
