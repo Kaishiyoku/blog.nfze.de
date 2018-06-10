@@ -81,6 +81,7 @@
                 $(this).datetimepicker({
                     format: 'MM/DD/YYYY HH:mm',
                     minDate: moment(),
+                    useCurrent: false,
                 });
             });
         });
