@@ -19,7 +19,7 @@ class ArticleController extends Controller
     private $validationRules = [
         'title' => ['required'],
         'content' => ['required'],
-        'published_at' => ['date_format:m/d/Y H:i'],
+        'published_at' => ['nullable', 'date_format:m/d/Y H:i'],
     ];
 
     /**

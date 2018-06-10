@@ -1,12 +1,12 @@
 <?php
 
-use League\CommonMark\CommonMarkConverter;
+use App\Libraries\Markdown\CustomMarkdown;
 
 if (! function_exists('parseMarkdown')) {
     function parseMarkdown(string $content) : string
     {
-        $converter = new CommonMarkConverter();
+        $parser = new CustomMarkdown();
 
-        return $converter->convertToHtml($content);
+        return $parser->parse($content);
     }
 }
