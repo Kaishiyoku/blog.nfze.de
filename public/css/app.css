@@ -10448,3 +10448,7 @@ a.text-dark:focus {
   padding-left: .5rem;
 }
 
+.bootstrap-datetimepicker-widget.dropdown-menu {
+  width: 16rem !important;
+}
+
