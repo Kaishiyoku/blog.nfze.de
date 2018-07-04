@@ -1,0 +1,28 @@
+language: php
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+env:
+  global:
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.1
+    - php: 7.2
+    - php: nightly
+  allow_failures:
+    - php: nightly
+
+before_install:
+  - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || phpenv config-rm xdebug.ini'
+  - composer self-update
+
+install:
+  - composer install
+  - ./vendor/bin/simple-phpunit install
+
+script:
