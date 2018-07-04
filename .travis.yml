@@ -8,6 +8,9 @@ cache:
 env:
   global:
   
+services:
+  - mysql
+  
 matrix:
   fast_finish: true
   include:
