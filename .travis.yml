@@ -23,6 +23,5 @@ before_install:
 
 install:
   - composer install
-  - ./vendor/bin/simple-phpunit install
 
 script:
