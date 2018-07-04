@@ -26,6 +26,6 @@ before_install:
 install:
   - composer install --no-interaction
   - php artisan key:generate
-  - php artisan serve --env=testing --port=8000 --host=localhost &
+  - php artisan serve --port=8000 --host=localhost &
 
 script:
