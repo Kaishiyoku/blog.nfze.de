@@ -17,7 +17,7 @@
 
     <div class="col-lg-12">
         <div class="input-group date" id="published_at_picker" data-target-input="nearest" data-provide="datepicker">
-            {{ Form::text('published_at', old('published_at', $article->published_att), ['class' => 'form-control datetimepicker-input' . ($errors->has('published_at') ? ' is-invalid' : ''), 'data-target' => '#published_at_picker']) }}
+            {{ Form::text('published_at', old('published_at', formatDateTime($article->published_at)), ['class' => 'form-control datetimepicker-input' . ($errors->has('published_at') ? ' is-invalid' : ''), 'data-target' => '#published_at_picker']) }}
 
             <div class="input-group-append" data-target="#published_at_picker" data-toggle="datetimepicker">
                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
