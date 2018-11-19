@@ -27,6 +27,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article published()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article wherePublishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article unpublished()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article query()
  */
 class Article extends Model
 {
