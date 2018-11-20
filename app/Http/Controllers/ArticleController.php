@@ -45,6 +45,8 @@ class ArticleController extends Controller
             $articles = Article::orderBy('published_at', 'desc');
         }
 
+        $articles = $articles->paginate(env('ARTICLES_PER_PAGE'));
+
         return view('article.index', compact('articles'));
     }
 
