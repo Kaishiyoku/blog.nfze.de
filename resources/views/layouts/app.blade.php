@@ -81,7 +81,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('[data-provide="datepicker"]').each(function () {
-                $(this).datetimepicker({
+                var $this = $(this);
+                $this.datetimepicker({
                     format: 'MM/DD/YYYY HH:mm',
                     minDate: moment(),
                     useCurrent: false,

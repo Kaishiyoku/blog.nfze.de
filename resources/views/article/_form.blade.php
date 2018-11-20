@@ -13,6 +13,20 @@
 </div>
 
 <div class="form-group row">
+    {{ Form::label('category_id', __('validation.attributes.category_id'), ['class' => 'col-lg-12 control-label']) }}
+
+    <div class="col-lg-12">
+        {{ Form::select('category_id', $categories, $article->category->id ?? null, ['class' => 'form-control']) }}
+
+        @if ($errors->has('category_id'))
+            <div class="invalid-feedback">
+                {{ $errors->first('category_id') }}
+            </div>
+        @endif
+    </div>
+</div>
+
+<div class="form-group row">
     {{ Form::label('published_at', __('validation.attributes.published_at'), ['class' => 'col-lg-12 control-label']) }}
 
     <div class="col-lg-12">

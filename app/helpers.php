@@ -13,9 +13,9 @@ if (! function_exists('parseMarkdown')) {
 }
 
 if (! function_exists('formatDateTime')) {
-    function formatDateTime(Carbon $date) : string
+    function formatDateTime(Carbon $date = null, $emptyValue = '') : string
     {
-        return $date->formatLocalized('%m/%d/%Y %H:%M');
+        return empty($date) ? $emptyValue : $date->formatLocalized('%m/%d/%Y %H:%M');
     }
 }
 

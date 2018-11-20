@@ -30,6 +30,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article query()
+ * @property int $category_id
+ * @property-read \App\Models\Category $category
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereCategoryId($value)
  */
 class Article extends Model
 {
@@ -114,5 +117,10 @@ class Article extends Model
     public function isPublished()
     {
         return $this->published_at->lte(Carbon::now());
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

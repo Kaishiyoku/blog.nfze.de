@@ -8,4 +8,6 @@ return [
     'breadcrumbs' => [
         'home' => 'Home',
     ],
+    'defaultCategoryTitle' => 'Uncategorized',
+    'unknown' => 'unknown',
 ];

@@ -145,6 +145,7 @@ return [
         'title' => 'Title',
         'content' => 'Content',
         'published_at' => 'To be published at',
+        'category_id' => 'Category',
     ],
 
 ];

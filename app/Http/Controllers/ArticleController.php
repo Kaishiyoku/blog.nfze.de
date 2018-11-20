@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -58,8 +59,9 @@ class ArticleController extends Controller
     public function create()
     {
         $article = new Article();
+        $categories = $this->getCategories();
 
-        return view('article.create', compact('article'));
+        return view('article.create', compact('article', 'categories'));
     }
 
     /**
@@ -72,8 +74,9 @@ class ArticleController extends Controller
     {
         $request->validate($this->getValidationRulesWithNameUniqueness());
 
+        $category = Category::findOrFail($request->get('category_id'));
         $article = new Article($request->all());
-        $article->save();
+        $category->articles()->save($article);
 
         flash(__('article.create.success'))->success();
 
@@ -89,7 +92,7 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         if (!$article->isPublished() && auth()->guest()) {
-            abort(404);
+            abort(403);
         }
 
         return view('article.show', compact('article'));
@@ -103,7 +106,9 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('article.edit', compact('article'));
+        $categories = $this->getCategories();
+
+        return view('article.edit', compact('article', 'categories'));
     }
 
     /**
@@ -163,5 +168,10 @@ class ArticleController extends Controller
         $validationRules['name'][] = $nameUniquessRule;
 
         return $validationRules;
+    }
+
+    private function getCategories()
+    {
+        return Category::orderBy('title')->pluck('title', 'id')->toArray();
     }
 }
