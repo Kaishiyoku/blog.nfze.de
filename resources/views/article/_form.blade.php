@@ -34,7 +34,7 @@
             {{ Form::text('published_at', old('published_at', formatDateTime($article->published_at)), ['class' => 'form-control datetimepicker-input' . ($errors->has('published_at') ? ' is-invalid' : ''), 'data-target' => '#published_at_picker']) }}
 
             <div class="input-group-append" data-target="#published_at_picker" data-toggle="datetimepicker">
-                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                <button type="button" class="btn btn-outline-dark"><i class="fa fa-calendar"></i></button>
             </div>
         </div>
 

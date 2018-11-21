@@ -12,12 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -82,11 +77,20 @@
         $(document).ready(function () {
             $('[data-provide="datepicker"]').each(function () {
                 var $this = $(this);
-                $this.datetimepicker({
+                var date = $this.find('input').val();
+
+                var baseConfig = {
                     format: 'MM/DD/YYYY HH:mm',
-                    minDate: moment(),
-                    useCurrent: false,
-                });
+                    useCurrent: true,
+                    calendarWeeks: true,
+                    allowInputToggle: true,
+                };
+
+                var config = date ? _.merge(baseConfig, {
+                    defaultDate: moment(date, 'MM/DD/YYYY HH:mm')
+                }) : baseConfig;
+
+                $this.datetimepicker(config);
             });
         });
     </script>
