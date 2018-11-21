@@ -168,6 +168,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Spatie\PaginateRoute\PaginateRouteServiceProvider::class,
+        Kaishiyoku\CreateUser\CreateUserServiceProvider::class,
 
         /*
          * Application Service Providers...
