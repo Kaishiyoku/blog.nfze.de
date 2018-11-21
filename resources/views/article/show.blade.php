@@ -12,7 +12,7 @@
             &diam;
 
             @if ($article->isPublished())
-                @lang('article.published_at', ['date' => $article->published_at])
+                @lang('article.published_at', ['date' => formatDateTime($article->published_at)])
             @else
                 <span class="text-warning">{{ __('article.to_be_published_at', ['date' => formatDateTime($article->published_at, __('common.unknown'))]) }}</span>
             @endif
