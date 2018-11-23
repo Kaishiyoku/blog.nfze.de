@@ -30108,10 +30108,24 @@ window.Popper = __webpack_require__(5).default;
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(6);
+    window.$ = window.jQuery = __webpack_require__(6);
 
-  __webpack_require__(139);
-  window.moment = __webpack_require__(0);
+    __webpack_require__(139);
+    window.moment = __webpack_require__(0);
+
+    $(document).ready(function () {
+        $('[data-confirm]').on('click', function () {
+            var confirmationText = $(this).attr('data-confirm');
+
+            if (_.isEmpty(confirmationText) || confirmationText == 1) {
+                confirmationText = 'Are you sure?';
+            }
+
+            if (!confirm(confirmationText)) {
+                return false;
+            }
+        });
+    });
 } catch (e) {}
 
 /**
@@ -30133,9 +30147,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 /**

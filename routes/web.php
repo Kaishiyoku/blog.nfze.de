@@ -16,3 +16,4 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::paginate('articles', 'ArticleController@index');
 Route::resource('articles', 'ArticleController')->except('index');
 Route::post('preview', 'ArticleController@preview')->name('articles.preview');
+Route::resource('categories', 'CategoryController')->except('show');

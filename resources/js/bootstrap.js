@@ -13,6 +13,20 @@ try {
 
     require('bootstrap');
     window.moment = require('moment');
+
+    $(document).ready(function () {
+        $('[data-confirm]').on('click', function () {
+            let confirmationText = $(this).attr('data-confirm');
+
+            if (_.isEmpty(confirmationText) || confirmationText == 1) {
+                confirmationText = 'Are you sure?';
+            }
+
+            if (!confirm(confirmationText)) {
+                return false;
+            }
+        });
+    });
 } catch (e) {}
 
 /**

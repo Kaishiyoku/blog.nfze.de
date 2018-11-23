@@ -9872,3 +9872,15 @@ hr.subtle:after {
   -webkit-transform: rotate(60deg);
   transform: rotate(60deg);
 }
+
+.btn.btn-link.btn-delete {
+  margin-top: -2px;
+  padding: 0 7px 1px;
+  color: #ff1229;
+}
+
+.btn.btn-plain:hover, .btn.btn-plain:focus {
+  color: #007bff;
+  border: 1px solid #99caff;
+  background-color: transparent !important;
+}

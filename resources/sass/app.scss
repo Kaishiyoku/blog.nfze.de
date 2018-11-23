@@ -50,3 +50,21 @@ hr {
     }
   }
 }
+
+.btn {
+  &.btn-link {
+    &.btn-delete {
+      margin-top: -2px;
+      padding: 0 7px 1px;
+      color: saturate(theme-color("danger"), 30%);
+    }
+  }
+
+  &.btn-plain {
+    &:hover, &:focus {
+      color: theme-color("primary");
+      border: 1px solid lighten(theme-color("primary"), 30%);
+      background-color: transparent !important;
+    }
+  }
+}
