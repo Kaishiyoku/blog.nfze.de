@@ -12,7 +12,7 @@ class ArticleController extends Controller
     /**
      * @var string
      */
-    private $redirectRoute = 'articles.index';
+    private $redirectRoute = 'home';
 
     /**
      * @var array

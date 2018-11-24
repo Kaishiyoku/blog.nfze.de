@@ -25,9 +25,11 @@
         @auth
             <hr/>
 
-            <p>
+            <div>
                 {{ Html::linkRoute('articles.edit', __('common.edit'), [$article]) }}
-            </p>
+
+                @include('shared._delete_link', ['route' => ['articles.destroy', $article]])
+            </div>
         @endauth
     </div>
 @endsection

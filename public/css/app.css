@@ -9884,3 +9884,7 @@ hr.subtle:after {
   border: 1px solid #99caff;
   background-color: transparent !important;
 }
+
+.inline {
+  display: inline;
+}
